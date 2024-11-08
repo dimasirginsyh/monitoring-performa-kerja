@@ -14,6 +14,3 @@ $mysqli = mysqli_connect($hostname, $username, $password, $database);
 if (!$mysqli) {
     echo "Dont connect to database";
 }
-// else {
-//     echo "Can connect to database";
-// }

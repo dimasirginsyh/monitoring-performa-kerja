@@ -5,14 +5,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
 
 
 <?php include_once("layouts/tophtml.php") ?>
-<a href="add.php">Add New User</a><br /><br />
-
+<h1 class="mb-4">Karyawan</h1>
 <table class="table table-bordered w-100">
     <thead>
         <tr>
             <th class="text-center">No</th>
-            <th>Name</th>
-            <th>Username</th>
+            <th>Nama</th>
+            <th>Posisi</th>
             <th>Create Time</th>
             <th>Action</th>
         </tr>
