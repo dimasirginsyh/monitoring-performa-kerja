@@ -4,8 +4,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
 ?>
 
 
-<?php include_once("layouts/tophtml.php") ?>
-<h1 class="mb-4">Karyawan</h1>
+<?php include_once("layouts/top-html.php") ?>
 <table class="table table-bordered w-100">
     <thead>
         <tr>
@@ -40,4 +39,4 @@ $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
         ?>
     </tbody>
 </table>
-<?php include_once("layouts/bottomhtml.php") ?>
+<?php include_once("layouts/bottom-html.php") ?>
