@@ -1,4 +1,5 @@
 <?php
+include_once("utils/sessions.php");
 include_once("db/config.php");
 include_once("utils/password.php");
 $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");

@@ -1,11 +1,12 @@
 <?php
+include_once("utils/sessions.php");
 include_once("db/config.php");
 $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
 ?>
 
 
 <?php include_once("layouts/top-html.php") ?>
-<a href="add.php">Add New User</a><br /><br />
+<!-- <a href="add.php">Add New User</a><br /><br /> -->
 
 <table class="table table-bordered w-100">
     <thead>

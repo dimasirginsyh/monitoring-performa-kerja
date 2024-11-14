@@ -1,18 +1,20 @@
 <?php
 include_once("utils/sessions.php");
 include_once("db/config.php");
-$result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
+$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 ?>
 
 
 <?php include_once("layouts/top-html.php") ?>
+<!-- <a href="add.php">Add New User</a><br /><br /> -->
+
 <table class="table table-bordered w-100">
     <thead>
         <tr>
             <th class="text-center">No</th>
-            <th>Nama</th>
-            <th>Posisi</th>
-            <th>Create Time</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Role</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -24,11 +26,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
             echo "<td class='text-center'>" . $index . "</td>";
             echo "<td>" . $user_data['name'] . "</td>";
             echo "<td>" . $user_data['username'] . "</td>";
-            echo "<td>" . $user_data['create_time'] . "</td>";
+            echo "<td>" . $user_data['username'] . "</td>";
             echo '
                             <td class="d-flex gap-2">
-                                <a href="employee.detail.php?id=' . $user_data['id'] . '">
-                                    <button type="button" class="btn btn-secondary">Detail</button>
+                                <a href="edit.php?id=$user_data[id]">
+                                    <button type="button" class="btn btn-warning">Edit</button>
+                                </a>
+                                <a href="delete.php?id=$user_data[id]">
+                                    <button type="button" class="btn btn-danger">Delete</button>
                                 </a>
                             </td></tr>
                         ';

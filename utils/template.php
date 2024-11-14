@@ -7,6 +7,8 @@ function titleByURI()
         echo "Karyawan";
     } elseif ($_SERVER['REQUEST_URI'] === "/task.php") {
         echo "Tugas";
+    } elseif ($_SERVER['REQUEST_URI'] === "/user.php") {
+        echo "User";
     }
 }
 
