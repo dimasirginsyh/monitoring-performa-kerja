@@ -16,6 +16,7 @@
                 Dashboard
             </a>
         </li>
+        <?php if ($_SESSION['role'] == "employee" || $_SESSION['role'] == "admin") { ?>
         <li class="nav-item">
             <a href="/task.php" class="<?php echo $_SERVER['REQUEST_URI'] === "/task.php" || str_contains($_SERVER['REQUEST_URI'], 'task')  ? 'nav-link active' : 'nav-link link-body-emphasis'; ?>" aria-current="page">
                 <svg class="bi pe-none me-2" width="16" height="16">
@@ -24,6 +25,8 @@
                 Tugas
             </a>
         </li>
+        <?php } ?>
+        <?php if ($_SESSION['role'] == "manager" || $_SESSION['role'] == "admin") { ?>
         <li class="nav-item">
             <a href="/employee.php" class="<?php echo $_SERVER['REQUEST_URI'] === "/employee.php" || str_contains($_SERVER['REQUEST_URI'], 'employee') ? 'nav-link active' : 'nav-link link-body-emphasis'; ?>" aria-current="page">
                 <svg class="bi pe-none me-2" width="16" height="16">
@@ -32,14 +35,17 @@
                 Karyawan
             </a>
         </li>
-        <li class="nav-item">
-            <a href="/user.php" class="<?php echo $_SERVER['REQUEST_URI'] === "/user.php" || str_contains($_SERVER['REQUEST_URI'], 'user') ? 'nav-link active' : 'nav-link link-body-emphasis'; ?>" aria-current="page">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use xlink:href="#speedometer2" />
-                </svg>
-                User
-            </a>
-        </li>
+        <?php } ?>
+        <?php if ($_SESSION['role'] == "admin") { ?>
+            <li class="nav-item">
+                <a href="/user.php" class="<?php echo $_SERVER['REQUEST_URI'] === "/user.php" || str_contains($_SERVER['REQUEST_URI'], 'user') ? 'nav-link active' : 'nav-link link-body-emphasis'; ?>" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2" />
+                    </svg>
+                    Pengguna
+                </a>
+            </li>
+        <?php } ?>
     </ul>
     <hr>
     <div class="dropdown">

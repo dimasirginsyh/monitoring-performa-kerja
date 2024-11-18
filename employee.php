@@ -1,7 +1,7 @@
 <?php
 include_once("utils/sessions.php");
 include_once("db/config.php");
-$result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
+$result = mysqli_query($mysqli, "SELECT users.id AS user_id, users.name AS name, roles.rolename AS rolename FROM users JOIN roles ON users.role_id = roles.id WHERE rolename = 'employee' ORDER BY user_id DESC");
 ?>
 
 
@@ -12,7 +12,6 @@ $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
             <th class="text-center">No</th>
             <th>Nama</th>
             <th>Posisi</th>
-            <th>Create Time</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -23,11 +22,10 @@ $result = mysqli_query($mysqli, "SELECT * FROM user ORDER BY id DESC");
             echo "<tr>";
             echo "<td class='text-center'>" . $index . "</td>";
             echo "<td>" . $user_data['name'] . "</td>";
-            echo "<td>" . $user_data['username'] . "</td>";
-            echo "<td>" . $user_data['create_time'] . "</td>";
+            echo "<td>" . $user_data['rolename'] . "</td>";
             echo '
                             <td class="d-flex gap-2">
-                                <a href="employee.detail.php?id=' . $user_data['id'] . '">
+                                <a href="employee.detail.php?id=' . $user_data['user_id'] . '">
                                     <button type="button" class="btn btn-secondary">Detail</button>
                                 </a>
                             </td></tr>

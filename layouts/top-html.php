@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <?php if ($_SERVER['REQUEST_URI'] === "/task.php") include_once("components/modal.task.add.php") ?>
+    <?php if ($_SERVER['REQUEST_URI'] === "/user.php") include_once("components/modal.user.add.php") ?>
     <div class="d-flex overflow-hidden" style="height: 100vh">
         <?php include_once("sidebar.php") ?>
         <main class="p-4 flex-fill overflow-auto">
@@ -19,5 +21,5 @@
                 <?php titleByURI(); ?>
             </h1>
             <div class="d-flex justify-content-end mb-4 <?php handlerShowAddButton(); ?>">
-                <button type="button" class="btn btn-success" style="min-width: 150px;">Tambah</button>
+                <button type="button" class="btn btn-success" style="min-width: 150px;" data-bs-toggle="modal" data-bs-target="#componentModal">Tambah</button>
             </div>

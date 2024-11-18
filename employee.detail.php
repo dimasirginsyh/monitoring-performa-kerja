@@ -1,6 +1,7 @@
 <?php
+include_once("utils/sessions.php");
 include_once("db/config.php");
-$result = mysqli_query($mysqli, "SELECT * FROM user WHERE id=$_GET[id]");
+$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$_GET[id]");
 ?>
 
 

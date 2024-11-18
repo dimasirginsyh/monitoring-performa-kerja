@@ -8,7 +8,7 @@ function titleByURI()
     } elseif ($_SERVER['REQUEST_URI'] === "/task.php") {
         echo "Tugas";
     } elseif ($_SERVER['REQUEST_URI'] === "/user.php") {
-        echo "User";
+        echo "Pengguna";
     }
 }
 
@@ -16,8 +16,8 @@ function handlerShowAddButton()
 {
     if ($_SERVER['REQUEST_URI'] === "/") {
         echo 'd-none';
-    } elseif ($_SERVER['REQUEST_URI'] === "/employee.php") {
-        echo '';
+    } elseif (str_contains($_SERVER['REQUEST_URI'], "employee")) {
+        echo 'd-none';
     } elseif ($_SERVER['REQUEST_URI'] === "/task.php") {
         echo '';
     }
