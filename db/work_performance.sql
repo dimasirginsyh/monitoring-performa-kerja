@@ -8,7 +8,7 @@ CREATE TABLE `roles` (
   `rolename` varchar(20) DEFAULT NULL,
   `description` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS task;
 CREATE TABLE `task` (
@@ -20,7 +20,7 @@ CREATE TABLE `task` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `task_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE `users` (
@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`),
   KEY `role_id` (`role_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT COLLATE=utf8_general_ci;
 
 INSERT INTO roles(id,rolename,description) VALUES(1,'''employee''','X''70656b65726a61'''),(2,'''manager''','X''6d616e61676572'''),(3,'''admin''','X''61646d696e''');
 
