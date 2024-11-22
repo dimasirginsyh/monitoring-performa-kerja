@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +26,17 @@
                             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                         </div>
                     </div>
+                    <?php
+                    if (isset($_SESSION['error_message'])) {
+                    ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['error_message']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php
+                        unset($_SESSION['error_message']);
+                    }
+                    ?>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
