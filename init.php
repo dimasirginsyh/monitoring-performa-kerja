@@ -2,42 +2,28 @@
 
 include_once("db/config.php");
 
-// format datetime bisa diisi dengan YYYY-MM-DD hh:mm:ss
+// table role
+$tableRoles = mysqli_query($mysqli, '
+    CREATE TABLE IF NOT EXISTS roles(
+        id INT NOT NULL AUTO_INCREMENT,
+        rolename VARCHAR(20),
+        description TEXT,
+        PRIMARY KEY (id)
+    );
+');
 
 // table user
-// $tableUsers = mysqli_query($mysqli, '
-//     CREATE TABLE IF NOT EXISTS users(
-//         id INT NOT NULL AUTO_INCREMENT,
-//         username VARCHAR(20) UNIQUE NOT NULL,
-//         password VARCHAR(100) NOT NULL,
-//         name VARCHAR(50) NOT NULL,
-//         role_id INT NOT NULL,
-//         PRIMARY KEY (id),
-//         FOREIGN KEY (role_id) REFERENCES roles(id)
-//     );
-// ');
-
-// table role
-// $tableRoles = mysqli_query($mysqli, '
-//     CREATE TABLE IF NOT EXISTS roles(
-//         id INT NOT NULL AUTO_INCREMENT,
-//         rolename VARCHAR(20),
-//         description TEXT,
-//         PRIMARY KEY (id)
-//     );
-// ');
-
-// table user-role
-// $tableUserRole = mysqli_query($mysqli, '
-//     CREATE TABLE IF NOT EXISTS userrole(
-//         id INT NOT NULL AUTO_INCREMENT,
-//         user_id INT,
-//         role_id INT,
-//         PRIMARY KEY (id),
-//         FOREIGN KEY (user_id) REFERENCES users(id),
-//         FOREIGN KEY (role_id) REFERENCES roles(id) 
-//     );
-// ');
+$tableUsers = mysqli_query($mysqli, '
+    CREATE TABLE IF NOT EXISTS users(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(20) UNIQUE NOT NULL,
+        password VARCHAR(100) NOT NULL,
+        name VARCHAR(50) NOT NULL,
+        role_id INT NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (role_id) REFERENCES roles(id)
+    );
+');
 
 $tableTask = mysqli_query($mysqli, '
     CREATE TABLE IF NOT EXISTS task(
@@ -51,24 +37,18 @@ $tableTask = mysqli_query($mysqli, '
     );
 ');
 
-// if ($tableUsers) {
-//     $passwordDefault = password_hash("123123", PASSWORD_DEFAULT, ['cost' => 10]);
-//     mysqli_query($mysqli, "INSERT INTO users (username, password, name) VALUES ('test', '$passwordDefault', 'test')");
-//     mysqli_query($mysqli, "INSERT INTO users (username, password, name) VALUES ('testing', '$passwordDefault', 'testing')");
-// }
+if ($tableRoles) {
+    mysqli_query($mysqli, '
+        INSERT INTO roles (rolename, description)
+        VALUES ("employee", "pekerja"),
+        ("manager", "manager"),
+        ("admin", "admin")
+    ');
+}
 
-// if ($tableRoles) {
-//     mysqli_query($mysqli, '
-//         INSERT INTO roles (rolename, description)
-//         VALUES ("employee", "pekerja"),
-//         ("manager", "manager")
-//     ');
-// }
-
-// if ($tableUserRole) {
-//     mysqli_query($mysqli, '
-//         INSERT INTO userrole (user_id, role_id)
-//         VALUES (aaa, bbb),
-//         (aaa, bbb)
-//     ');
-// }
+if ($tableUsers) {
+    $passwordDefault = password_hash("123123", PASSWORD_DEFAULT, ['cost' => 10]);
+    mysqli_query($mysqli, "INSERT INTO users (username, password, name, role_id) VALUES ('pekerja1', '$passwordDefault', 'pekerja1', 1)");
+    mysqli_query($mysqli, "INSERT INTO users (username, password, name, role_id) VALUES ('manager1', '$passwordDefault', 'manager1', 2)");
+    mysqli_query($mysqli, "INSERT INTO users (username, password, name, role_id) VALUES ('admin', '$passwordDefault', 'admin', 3)");
+}
